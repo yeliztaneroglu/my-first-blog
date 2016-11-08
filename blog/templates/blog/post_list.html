@@ -1,22 +1,13 @@
-<html>    
-    <head>
-        <title>Yeliz Taneroglu blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">blog</a></h1>
+{% extends 'blog/base.html' %}
+                       
+{% block content %}
+{% for post in posts %}
+    <div class="post">
+        <div class="date">
+            {{ post.yayinlama_tarihi }}
         </div>
-        {% for post in posts %}
-            <div>
-                <p>published: {{ post.yayinlama_tarihi }}</p>
-                <h1><a href="">{{ post.baslik }}</a></h1>
-                <p>{{ post.yazi|linebreaksbr }}</p>
-            </div>
-        {% endfor %}  
-        <div>
-            <p>published: 08.11.2016, 12:14</p>
-            <h2><a href="">İkinci gönderim</a></h2>
-            <p>Bir varmış bir yokmuş, evvel zaman içinde, Ne kadar zevkli bir işmiş bilgisayarlarla uğraşmak. Artık bilgisayar başından kalkmam. kalbur saman içinde, develer tellal iken, pireler berber iken; ben annemin beşiğini tıngır mıngır sallar iken.</p>
-        </div>
-    </body>
-</html>
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.baslik }}</a></h1>
+        <p>{{ post.yazi|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+{% endblock content %}
