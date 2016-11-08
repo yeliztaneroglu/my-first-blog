@@ -6,13 +6,13 @@
         <div>
             <h1><a href="">blog</a></h1>
         </div>
-
-        <div>
-            <p>published: 08.11.2016, 12:14</p>
-            <h2><a href="">İlk Blogum</a></h2>
-            <p>Çok heyecanlıyım! Bu benim ilk blogum. Ne kadar zevkli bir işmiş bilgisayarlarla uğraşmak. Artık bilgisayar başından kalkmam. </p>
-        </div>
-
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.yayinlama_tarihi }}</p>
+                <h1><a href="">{{ post.baslik }}</a></h1>
+                <p>{{ post.yazi|linebreaksbr }}</p>
+            </div>
+        {% endfor %}  
         <div>
             <p>published: 08.11.2016, 12:14</p>
             <h2><a href="">İkinci gönderim</a></h2>
